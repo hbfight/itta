@@ -1,0 +1,31 @@
+<?php
+namespace app\api\controller\v1;
+
+use app\api\controller\BaseController;
+
+class Vercode extends BaseController{
+    
+    static public function vercode(){
+            $for=request()->post('code');
+            $forpass=request()->post('username');
+            echo 1;
+            exit;
+            if($for==session('tel_code')&&$forpass=session('phone')){//判断验证码是否正确 和获取验证码的设计号是否一致
+                var_dump('1');exit;
+                session('tel_code', null);//判断成功后清除短信session
+                return json([
+                    "code"=>201,
+                    "msg"=>"OK",
+                    "data"=>'OK'
+                ]);
+            }else{
+                echo 1;
+                exit;
+                return json([
+                    "code"=>400,
+                    "msg"=>"失败"
+                ]);
+            }
+        
+    }
+}

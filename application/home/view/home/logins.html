@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>登陆</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link rel="stylesheet" href="{:config('home_css')}weui.min.css">
+<link rel="stylesheet" href="{:config('home_css')}jquery-weui.min.css">
+<link rel="stylesheet" href="{:config('home_css')}public.css">
+<link rel="stylesheet" href="{:config('home_css')}styles.css">
+<style>
+
+  input:-webkit-autofill{
+    -webkit-box-shadow: 0 0 0px 1000px rgba(0,0,0,0.1) inset;
+    background-color:rgba(255,255,255,0.1)!important;
+    border: 1px solid rgba(0,0,0,0)!important;
+    
+  }
+  input::-webkit-input-placeholder{
+   color:#fff;
+   opacity: 0.5;
+  }
+  
+  
+</style>
+</head>
+<body class="logincolor">
+    <div class="container logincontainer">
+      <header class="public_headerlogin">
+        <a href="javascript:history.back()"> 
+      	<div class="login_navimg">
+      	  <img src="{:config('home_images')}nav_icon_closex.png" class="navclosex">
+      	</div>  
+        </a> 
+      </header>
+      <div class="login_from">	
+        <div calss="weui-cells weui-cells_from">
+           <div class="weui-cell login_input">
+        	   <input class="weui-input login_cell_input" name="phone" type='text' pattern="[0-9]*" value="" placeholder="手机号" maxlength="11" id="loginphone" autocomplete="off">
+           </div>
+           <div class="weui-cell login_input">
+        	 	<input class="weui-input login_cell_input" name="password" type="password" placeholder="密码" value="" autocomplete="off">
+           </div>
+        	 <a href="javascript:;" class="weui-btn login_btn" id="login_btn">
+        	 	<span class="a_color">登录</span>
+        	 </a>
+        	 
+        </div>
+      </div> 
+      <div class="weui-flex login_ahref">
+      	 <div class="weui-flex__item d_left"><a href="register.html?0">注册</a></div>
+      	 <div class="weui-flex__item d_center loghr">|</div>
+      	 <div class="weui-flex__item d_right"><a href="register.html?1">忘记密码</a></div>
+      </div>
+      <div class="login_fixedbttom">
+        <div class="weui-flex login_bank">
+      	 <div class="weui-flex__item ">
+      	 	 <p class="login_hr"></p>
+      	 </div>
+      	 <div class="weui-flex__item d_center">
+      	 	<span class="login_spantext">第三方</span>
+      	 </div>
+      	 <div class="weui-flex__item">
+      	 	<p class="login_hr"></p>
+      	 </div>
+        </div>
+        <div class="weui-flex login_icon_bank d_center">
+      	 <div class="weui-flex__item ">
+      	 	<img src="{:config('home_images')}icon_qq@2x.png">
+      	 </div>
+      	 <div class="weui-flex__item">
+      	 	<img src="{:config('home_images')}icon_sina_weibo.png">
+      	 </div>
+      	 <div class="weui-flex__item">
+      	 	<img src="{:config('home_images')}icon_wechat.png">
+      	 </div>
+        <div>
+      </div>
+    </div>
+    <script src="{:config('home_js')}jquery-3.0.0.min.js"></script>
+    <script src="{:config('home_js')}jquery-weui.min.js"></script>
+    <script>
+        $(function(){
+           var storage=window.localStorage;
+           var userp="";
+           $("input[name='phone']").val(storage.getItem("username"));
+           $("input[name='password']").val(storage.getItem("password"));
+
+ 
+           $("#loginphone").keyup(function(){  
+
+            $(this).val($(this).val().replace(/[^0-9.]/g,''));  
+
+              }).bind("paste",function(){  //CTR+V事件处理  
+
+            $(this).val($(this).val().replace(/[^0-9.]/g,''));   
+
+               }).css("ime-mode", "disabled"); //CSS设置输入法不可用  
+           
+           /* 登陆密码绑定 */
+           $("input[name='password']").bind('input propertychange',function(){
+               var username=$("input[name='phone']").val();
+               var userpwd=$("input[name='password']").val();
+               if(username==""){
+                  $("#login_btn").css("opacity",0.2);
+               }else{
+                  if(userpwd.length >='6'){
+                    $("#login_btn").css("opacity",1);
+                  }else{
+                    $("#login_btn").css("opacity",0.2);
+                  } 
+              }
+            })
+
+           $.toast.prototype.defaults.duration="1000";//设置默认时间为1s
+           $("#login_btn").click(function(){
+             var phone=$("input[name='phone']").val();
+             var password=$("input[name='password']").val();
+             var myreg=/^[1][3,4,5,7,8][0-9]{9}$/;
+             if(phone=="" || password==""){
+               $.toast("用户名或密码不能为空", "text");
+             }else if(!myreg.test(phone)){
+               $.toast("请输入正确的手机号", "text");
+             }else if(password.lenght < 6){
+               $.toast("登陆密码长度不能少于6个字符", "text");
+             }else{
+               $.ajax({
+                 url:"/api{:url('api/v1/land/land')}",
+                 data:{lang_name:phone,lang_pass:password},
+                 dataType:'json',
+                 type:'post',
+                 success:function(res){
+                    console.log(res);
+                    if(res.code=="201"){
+                      localStorage.setItem("username",phone);
+                      window.location.href="index_wap.html";
+                    }else{
+                      $.toast("登陆失败,请检查账号和密码", "text");
+                    }
+                 },
+                 error:function(XMLHttpRequest, textStatus, errorThrown){
+                     $.toast("登陆出错了", "text");
+                     console.log(XMLHttpRequest);
+                     console.log(textStatus);
+                     console.log(errorThrown);
+                 }
+              })
+            }
+          })  
+
+
+
+        })
+    </script>
+</body>
+</html>

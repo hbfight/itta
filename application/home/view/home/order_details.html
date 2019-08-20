@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1.0,user-scalable=no">
+<title>订单明细</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link rel="stylesheet" href="{:config('home_css')}weui.min.css">
+<link rel="stylesheet" href="{:config('home_css')}jquery-weui.min.css">
+<link rel="stylesheet" href="{:config('home_css')}public.css">
+<link rel="stylesheet" href="{:config('home_css')}styles.css">
+<link rel="stylesheet" href="{:config('home_css')}details.css">
+</head>
+<body class="details_color">
+    <div class="weui-loadmore weuiloadmore_bodyn">
+       <i class="weui-loading weuiloading_img"></i> 
+    </div>
+    <div class="container">
+    	<header class="public_header">
+    		<div class="public_left">
+    		  <a href="javascript:history.back();">
+      	  	    <img src="{:config('home_images')}nav_icon_back.png" class="nav_back">
+      	  	    <span class="header_back">返回</span>
+      	      </a>
+    		</div>
+    		<div class="public_center">
+    		   <h5 class="register_h5title">订单明细</h5>	
+    		</div>
+    	</header>
+    	<div class="weui-tab order_weuitab">
+    		<div class="weui-navbar order_navbar">
+    			<a class="weui-navbar__item navbar_item weui-bar__item--on" href="#tab1" Val="order_tab1"   value="0">全部<span class="orsp">order_tab1</span></a>
+    			<a class="weui-navbar__item navbar_item" href="#tab2" Val="order_tab2"  value="1">已报单<span class="orsp">order_tab2</span></a>
+    			<a class="weui-navbar__item navbar_item" href="#tab3" Val="order_tab3" value="2">已结算<span class="orsp">order_tab3</span></a>
+    		</div>
+    		<div class="weui-tab__bd">
+    		  <!-- 全部 -->	
+    		  <div id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active">
+      		  	<div id="order_tab1" class="order_tab_body"></div>
+              <div class="weui-infinite-scroll">
+                <div class="infinite-preloader"></div>
+                 <p class="order_more_data">正在加载...</p>
+              </div> 
+
+    		  </div>
+    	
+    		  <div id="tab2" class="weui-tab__bd-item ">
+              <div id="order_tab2" class="order_tab_body"></div> 
+    				  <div class="weui-infinite-scroll">
+                <div class="infinite-preloader"></div>
+                 <p class="order_more_data">正在加载...</p>
+              </div>
+    		  </div>
+    		  <!-- 已结算Tab -->
+    		  <div id="tab3" class="weui-tab__bd-item ">
+              <div id="order_tab3" class="order_tab_body"></div> 
+    				  <div class="weui-infinite-scroll">
+                <div class="infinite-preloader"></div>
+                 <p class="order_more_data">正在加载...</p>
+              </div>
+    		  </div>
+    		</div>
+    	</div>
+    </div>
+
+    <script src="{:config('home_js')}jquery-3.0.0.min.js"></script>
+    <script src="{:config('home_js')}jquery-weui.min.js"></script>
+    <script src="{:config('home_js')}public.js"></script>
+    <script src="{:config('home_js')}order_details.js"></script>
+</body>
+</html>

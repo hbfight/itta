@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>修改个人信息</title>
+<script src="JQ/jquery.js"></script>
+<script src="{:config('admin_lib')}layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript" src="{:config('admin_js')}xadmin.js"></script>
+<script type="text/javascript" src="{:config('admin_lib')}jquery/1.9.1/jquery.min.js"></script>
+	<script>
+    $(function(){	
+        $("#btn").click(function(){
+			var text1 = $("#text1").val();//获取值
+			var text2 = $("#text2").val();
+			
+			$.ajax({
+			    type: "post",
+			    url: http://itta1.topface88.com/api/v1/phone/phone,
+			    data: {text1:text1,text2:text2},
+			    success: function(data){
+			    	
+			    }
+			});
+			
+        });     
+    });   
+    </script>
+  </head>
+  <body>
+		<input type="text" id="text1"/>
+		<input type="text" id="text2"/>
+		<button id="btn">蛤</button>
+  </body>
+</html>

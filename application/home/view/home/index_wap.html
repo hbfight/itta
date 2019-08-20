@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>首页</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link rel="stylesheet" href="{:config('home_css')}weui.min.css">
+<link rel="stylesheet" href="{:config('home_css')}jquery-weui.min.css">
+<link rel="stylesheet" href="{:config('home_css')}public.css">
+<link rel="stylesheet" href="{:config('home_css')}index_wap.css">
+<style>
+   
+</style>
+</head>
+<body style="height:100%">
+    <div class="weui-loadmore weuiloadmore_body">
+     <i class="weui-loading weuiloading_img"></i>
+    <!--  <span class="weui-loadmore__tips">正在加载</span> -->
+    </div>
+    <div class="container">
+    	<!-- 头部 -->
+    	<header class="public_header index_header">
+        <div>
+    		  <div class="public_center">
+    			  <h5 class="register_h5title">秒杀</h5>
+    		  </div>
+    	 	  <div class="public_right" id="header_time">
+            <img src="{:config('home_images')}nav_icon_calendar.png" class="header_time">
+    			  <p class="header_time_text">今天</p>
+    		  </div>
+        </div>
+        <!-- 秒杀时间  -->
+        <div class="index_nav">
+          <div class="swiper-container" id="swiper_YDa">
+            <div class="swiper-wrapper weui-navbar" id="navtime">    
+            </div>
+          </div>
+        </div>        
+    	</header>
+      <!-- 主体内容 -->
+      <div class="weui-tab index_weui-tab">
+        	 
+          <!-- 秒杀倒计时 -->
+        	<div class="index_downtime">
+        		<div class="" style="display:inline-block;">抢到尽快报单,数量有限先报先返</div>
+        		<div class="index_downtime_Tm" style="display: inline-block;">
+        			<span>距结束</span>
+        			<span class="index_end_time" id="t_hour"></span><span class="time_get">:</span>
+        			<span class="index_end_time" id="t_minute"></span><span class="time_get">:</span>
+        			<span class="index_end_time" id="t_second"></span>
+        		</div>
+        	</div>
+          <div class="index_downtime_opacity"></div>
+        	<!-- 内容 -->
+        	<div class="weui-tab__bd weui-tab_bdcon" id="weuitabbdcon">
+        	  <div id="tab"> 
+                <!-- 数据展示区 -->
+        	  </div>
+            <!-- 滚动加载更多数据 -->
+            <div class="weui-infinite-scroll">
+              <div class="infinite-preloader"></div>
+              <p id="zai">正在加载...</p>
+            </div>
+        	</div>
+      </div>
+    
+      <!-- 底部导航 -->
+      <div class="weui-tabbar weui-tabbar_footer">
+         <a href="javascript:;" class="weui-tabbar__item weui-bar__item--on">
+            <div class="weui-tabbar__icon">
+              <img src="{:config('home_images')}tab_btn_home_sel.png" alt="">
+            </div>
+            <p class="weui-tabbar__label index_nav_footertext on">首页</p>
+         </a>
+         <a href="javascript:0;" class="weui-tabbar__item">
+            <div class="weui-tabbar__icon">
+              <img src="{:config('home_images')}tab_btn_quotes_nor.png" alt="">
+            </div>
+            <p class="weui-tabbar__label index_nav_footertext">详情页</p>
+         </a>
+         <a href="user.html" class="weui-tabbar__item">
+            <div class="weui-tabbar__icon">
+              <img src="{:config('home_images')}tab_btn_my_nor.png" alt="">
+            </div>
+            <p class="weui-tabbar__label index_nav_footertext">我</p>
+         </a>
+      </div>
+
+      <!-- 下拉菜单 -->
+      <div class="index_main">
+    	   <div class="index_main_table">
+    	      <div id="YD_body">
+    	    	  <!-- 内容展示区 -->
+    	      </div>
+    	  </div>
+      </div>
+      <?php $time = time(); ?>
+      <p id="phptime"><?php echo $time ?></p>
+    </div>
+    <script src="{:config('home_js')}jquery-3.0.0.min.js"></script>
+    <script src="{:config('home_js')}jquery-weui.min.js"></script>
+    <!-- <script src="{:config('home_js')}public.js"></script> -->
+    <script src="{:config('home_js')}swiper-3.4.2.min.js"></script>
+    <!-- <script src="{:config('home_js')}swiper.min.js"></script> -->    
+    <script src="{:config('home_js')}index_wap.js"></script>    
+</body>
+</html>

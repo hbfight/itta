@@ -1,0 +1,75 @@
+
+<!--头部-->
+  {include file='public/header' /}
+  <link rel="stylesheet" href="{:config('admin_css')}styles.css">
+  
+<body class="layui-anim layui-anim-up bodycolor">
+    <div class="x-nav">
+      <span class="layui-breadcrumb">
+        <a href="">地址列表</a>
+       
+      </span>
+      <span class="x-right">
+      	<a   class="rushbuy_addbtn" onclick="x_admin_show('添加地址','{:url("admin/admin/addAdd")}',500,380)" href="javascript:;">
+                <i class="layui-icon"></i>添加下单地址
+        </a>
+      </span>
+    </div>
+    <!-- 搜索条件 -->
+    <div class="x-body">
+      <div class="layui-row">
+        <!-- <form class="layui-form layui-col-md12 x-so">
+          <div class="layui-input-inline">
+            <select name="contrller" class="rushbuy_paixu">
+              <option value="0">默认排序</option>
+              <option value="1">报单数</option>
+              <option value="2">预估结算金额</option>
+            </select>
+          </div>
+        </form> -->
+      </div>
+      
+      <!-- 表格数据 -->
+      <table class="layui-table" id="addresslist_table" style="margin-bottom:60px;">
+        <thead>
+          <tr>
+            
+            <th style="width:15%;">编号</th>
+            <th style="text-align: left;">地址</th>
+            <th style="width:25%;">添加时间</th>
+            <th style="width:15%;">操作</th></tr>
+        </thead>
+        <tbody id="addresslist_tbody">
+        </tbody>  
+      </table>
+
+      <!-- 分页 -->
+      <div class="page member_listpage">
+        <div class="address_num">共有数据：<span id="address_currentnum">88</span> 条</div>
+         <!-- 页数 -->
+        <div id="addresslistpage" class="listpages">
+        </div>
+        <div>
+          <!-- <span class="member_list_spanpage">
+             <select name="contrller" class="member_list_selectpage">
+              <option value="0">10条/每页</option>
+              <option value="1">20条/每页</option>
+              <option value="2">30条/每页</option>
+            </select>
+          </span> -->
+          <span class="member_list_spanpage">
+            跳至&nbsp;&nbsp;<input type="text" class="input-page" name="input_page"/>&nbsp;页
+          </span>
+          <span class="member_list_spanpage">
+             <button class="input-page_btn" id="input-page">确定</button>
+          </span>
+        </div>
+      </div>
+
+    </div>
+    <script src="{:config('admin_js')}jqpaginator.min.js"></script>
+    <script src="{:config('admin_js')}addresslist.js"></script>
+    
+  </body>
+
+</html>

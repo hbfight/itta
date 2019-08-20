@@ -1,0 +1,114 @@
+
+  <!--头部-->
+  {include file='public/header' /}
+  <link rel="stylesheet" href="{:config('admin_css')}styles.css">
+  <style>
+    .layui-layer-loading .layui-layer-loading0{
+      margin:auto;
+    }
+  </style>
+  <body class="bodycolor">
+    <div class="x-nav">
+      <span class="layui-breadcrumb">
+        <a href="">抢购信息</a>
+      </span>
+      <span class="x-right">
+      	<a href="{:url('admin/admin/shopadd')}" class="rushbuy_addbtn"><i class="layui-icon"></i>添加抢购信息</a>
+      </span>
+       <!-- <button class="x-right rushbuy_addbtn" onclick="x_admin_show('添加用户','./order-add.html')"><i class="layui-icon"></i>添加抢购信息</button> -->
+    </div>
+    <div class="x-body">
+      <div class="layui-row rushby_from">
+        <!-- <form class="layui-form layui-col-md12 x-so"> -->
+          <div class="layui-input-inline"> 	
+            <select name="contrller" id="shoplist_type" class="rushbuy_paixu">
+              <option value="4">全部</option>
+              <option value="1">天猫</option>
+              <option value="2">京东</option>
+              <option value="3">唯品会</option>
+            </select>	
+          </div> 
+          <div class="layui-input-inline"> 
+              <input class="layui-input layui-inputtime" placeholder="请选择时间段" name="start" id="start">
+          </div>
+           <div class="layui-input-inline x-right">
+            <select name="contrller" id="shoplist_paixu" class="rushbuy_paixu">
+              <option value="default">默认排序</option>
+              <option value="number">报单数</option>
+              <option value="settle_price">预估结算金额</option>
+             
+            </select>
+          </div>
+          
+          
+        <!-- </form> -->
+      </div>
+      
+      <!-- table -->
+       <table class="layui-table" id="shoplisttable" style="margin-bottom:100px;">
+        <thead>
+          <tr>
+            <th>编号</th>
+            <th>名称</th>
+            <th>下单地址</th>
+            <th>报单数量</th>
+            <th>下单金额</th>
+            <th>预估结算金额</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody id="shoplist_tbody">
+        </tbody>
+        <tbody id="shoplist_tbodynone" style="display:none;">
+          <tr><td colspan="7" style="text-align: center;height:200px;">暂无你要的数据</td></tr>
+        </tbody> 
+      </table> 
+      <!-- end  -->      
+      <!--  分页  -->
+      <div class="rushbuy_page">
+        <div class="page rushbuy_pageflex">
+      	  <div style="float:left;">
+      		<div class="layui-input-inline">
+      		   <div class="layui-form-checkbox" lay-skin="primary">
+      			  <i class="layui-icon">&#xe605</i>
+      		   </div>
+      		</div>   
+      		<div class="layui-input-inline"> 	
+               <select name="contrller" class="rushbuy_paixu">
+                 <option value="0">批量操作</option>
+                 <option value="1">设置部门</option>
+                 <option value="2">设置状态</option>
+                 <option value="3">打印标签</option>
+             
+               </select>	
+            </div> 
+      	  </div>
+          <div style="display: flex;" id="shoplist_page">
+            <div class="address_num">共有数据：<span id="address_currentnum"></span>条</div>
+            <!-- 分页 -->
+            <div id="shoplistpage" class="listpages">
+            </div>
+            <div>
+               <!-- <span class="member_list_spanpage">
+                  <select name="contrller" class="member_list_selectpage">
+                   <option value="0">10条/每页</option>
+                   <option value="1">20条/每页</option>
+                   <option value="2">30条/每页</option>
+                 </select>
+               </span> -->
+               <span class="member_list_spanpage">
+                 跳至&nbsp;&nbsp;<input type="text" class="input-page" name="input_page"/>&nbsp;页
+               </span>
+               <span class="member_list_spanpage">
+                  <button class="input-page_btn" id="input-page">确定</button>
+               </span>
+            </div>
+        </div>
+      </div>
+    </div>
+    <script src="{:config('admin_js')}jqpaginator.min.js"></script>
+    <script src="{:config('admin_js')}shoplist.js"></script>
+   
+  </body>
+
+</html>

@@ -1,0 +1,103 @@
+<!--头部-->
+  {include file='public/header' /}
+  <link rel="stylesheet" href="{:config('admin_css')}styles.css">
+
+  <body class="bodycolor">
+    <div class="x-nav">
+      <span class="layui-breadcrumb">
+        <a href="">会员管理</a> >
+        <a href="">报单订单列表</a>
+      </span>
+
+       <!-- <button class="x-right rushbuy_addbtn" onclick="x_admin_show('添加用户','./order-add.html')"><i class="layui-icon"></i>添加抢购信息</button> -->
+     
+    </div>
+    <div class="x-body">
+      <div class="layui-row rushby_from">
+        <!-- <form class="layui-form layui-col-md12 x-so"> -->
+          <!-- 默认显示全部 -->
+          <div class="layui-input-inline"> 	
+            <select name="contrller" class="rushbuy_paixu" id="order_selectstatus">
+               <option value="4">全部</option>
+               <option value="1">未结算</option>
+               <option value="2">已结算</option>
+               <option value="3">已取消</option>
+            </select>	
+          </div> 
+          <!-- 排序 -->
+          <div class="layui-input-inline x-right">
+            <select name="contrller" class="rushbuy_paixu" id="order_paixu">
+              <option value="default">默认排序</option>
+              <option value="estimate_price">预估结算金额</option>
+            </select>
+          </div>
+        <!-- </form> -->
+      </div>
+      <table class="layui-table" style="margin-bottom:60px;">
+      	<!-- 头部标题  -->
+        <thead>
+          <tr>
+            <th>编号</th>
+            <th>提交时间</th>
+            <th>货品交易方式</th>
+            <th>订单号</th>
+            <th>货品数量</th>
+            <th>货品名称</th>
+            <th>会员备注</th>
+            <th>会员账号</th>
+            <th>支付宝</th>
+            <th>总订单预估结算金额</th>
+            <th>实际结算金额</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <!-- 主体内容tbody表格数据 -->
+        <tbody id="order_tbody">
+        </tbody>
+      </table>
+      <div class="rushbuy_page">
+        <div class="page rushbuy_pageflex">
+      	  <div style="float:left;">
+      		<div class="layui-input-inline">
+      		   <div class=" layui-form-checkbox" lay-skin="primary">
+      			  <i class="layui-icon">&#xe605</i>
+      		   </div>
+      		</div>   
+      		<div class="layui-input-inline"> 	
+               <select name="contrller" class="rushbuy_paixu">
+                 <option value="0">批量操作</option>
+                 <option value="1">设置部门</option>
+                 <option value="2">设置状态</option>
+                 <option value="3">打印标签</option>
+             
+               </select>	
+            </div> 
+      	  </div>
+          <div style="display:flex;" id="order_page">
+            <div class="address_num">共有数据：<span id="address_currentnum"></span> 条</div>
+            <div id="orderlistpage" class="listpages">  
+            </div>
+            <div>
+               <!-- <span class="member_list_spanpage">
+                  <select name="contrller" class="member_list_selectpage">
+                   <option value="0">10条/每页</option>
+                   <option value="1">20条/每页</option>
+                   <option value="2">30条/每页</option>
+                 </select>
+               </span> -->
+               <span class="member_list_spanpage">
+                 跳至&nbsp;&nbsp;<input type="text" class="input-page" name="input_page"/>&nbsp;页
+               </span>
+               <span class="member_list_spanpage">
+                  <button class="input-page_btn order_btn1 order_btn2" id="input-page">确定</button>
+               </span>
+            </div>
+          </div>  
+        </div>
+      </div>
+    </div>
+    <script src="{:config('admin_js')}jqpaginator.min.js"></script>
+    <script src="{:config('admin_js')}member_order.js"></script>
+  </body>
+
+</html>

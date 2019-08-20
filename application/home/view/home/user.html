@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1,maximum-scale=1.0,user-scalable=no">
+<title>我的</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link rel="stylesheet" href="{:config('home_css')}weui.min.css">
+<link rel="stylesheet" href="{:config('home_css')}jquery-weui.min.css">
+<link rel="stylesheet" href="{:config('home_css')}public.css">
+<link rel="stylesheet" href="{:config('home_css')}index_wap.css">
+
+</head>
+<body class="body_user">
+    <div class="container">
+    	<!-- user_header -->
+       <header class="user_header">	
+    	   <div class="weui-pannel weui-pannel_access">
+    		    <div class="weui-panel__bd user_main">
+               <a href="javascript:0;" class="weui-media-box usera_active weui-media-box_appmsg" id="user_info_ok">
+                 <div class="weui-media-box__hd user_imglogo">
+                   <img class="weui-media-box__thumb" src="{:config('home_images')}user_info_icon.png"> <!-- {:config('home_images')}user_info_icon.png -->
+                 </div>
+                 <div class="weui-media-box__bd" style="position:relative;">
+                   <h4 class="weui-media-box__title user_main_name"></h4>
+                   <!-- <p class="user_main_subname">
+                   	未填写
+                   </p> -->
+                   <p class="user_more_span">
+                      <img src="{:config('home_images')}profile_icon_more.png" class="user_more_img" alt="">
+                   </p>
+                 </div>
+               </a>
+            </div>   
+    	   </div>
+      </header>	
+      <!-- user order -->
+      <div class="user_one">
+        <div class="user_order">
+      	  <div class="weui-cells">
+      	 	  <div class="weui-cell user_order_cell">
+      	 		<div class="weui-cell__bd">
+      	 			<h5 class="user_title">我的</h5>
+      	 		</div>
+      	 		<div calss="weui-cell__ft">
+      	 			<a href="javascript:0;" id="order_details_ok">
+      	 			   <p class="user_order_details">
+      	 			   	  <span>查看全部订单</span>
+      	 			   	  <img src="{:config('home_images')}profile_orders_more.png" class="user_order_moreimg" alt="">
+      	 			   </p>		
+      	 			</a>
+      	 		</div>
+      	 	  </div>
+      	 	  <div class="weui-cell user_order_cell_s">
+      	 		 <div class="weui-cell__bd">
+      	 			<p class="user_order_text">已结算</p>
+      	 			<p class="user_order_money">￥<span id="actual_price"></span></p>
+      	 			<p class="user_order_more">
+                <a href="javascript:0;" id="settlement_details_ok"><span>查看明细</span><img src="{:config('home_images')}profile_orders_more_blue.png" class="user_order_moreimg" alt="">
+                </a>
+              </p>
+      	 		 </div>
+      	 		 <div class="weui-cell__ft ftheight">
+      	 			<p class="user_order_text" style="margin-top:2px;">待结算</p>
+      	 			<p class="user_order_money">￥<span id="estimate_price"></span></p>   	 			
+      	 		 </div>
+      	 	  </div>
+      	  </div>
+        </div>
+      </div>
+      <!-- user common  -->
+      <div class="user_two">
+      	 <div class="weui-cells">
+      	 	<div class="weui-cell">
+      	 		<div class="weui-cell__bd">
+      	 			<h5 class="user_title">常用工具</h5>
+      	 		</div>
+      	 	</div>
+      	 </div>
+      	 <div class="weui-flex">
+      	 	<div class="weui-flex__item">
+      	 		<figure>
+      	 			<img src="{:config('home_images')}profile_icon_problem.png" class="user_common_img">
+      	 			<p class="user_common_text">常见问题</p>
+      	 		</figure>
+      	 	</div>
+      	 	<div class="weui-flex__item">
+      	 		<figure>
+      	 			<img src="{:config('home_images')}profile_icon_customerservice.png" class="user_common_img">
+      	 			<p class="user_common_text">客服中心</p>
+      	 		</figure>
+      	 	</div>
+      	 	<div class="weui-flex__item">
+      	 		<figure>
+      	 			<img src="{:config('home_images')}profile_icon_contact.png" class="user_common_img">
+      	 			<p class="user_common_text">联系方式</p>
+      	 		</figure>
+      	 	</div>
+      	 	<div class="weui-flex__item">
+      	 		<figure>
+      	 			<img src="{:config('home_images')}profile_icon_complaints.png" class="user_common_img">
+      	 			<p class="user_common_text">投诉反馈</p>
+      	 		</figure>
+      	 	</div>
+      	 </div>
+      	 <div class="weui-flex user_common_flexbottom">
+      	 	<div class="weui-flex__item">
+      	 		<figure>
+      	 			<img src="{:config('home_images')}profile_icon_settlein.png" class="user_common_img">
+      	 			<p class="user_common_text">商家入驻</p>
+      	 		</figure>
+      	 	</div>
+      	 	<div class="weui-flex__item">
+      	 		<figure>
+      	 			<img src="{:config('home_images')}profile_icon_tb.png" class="user_common_img">
+      	 			<p class="user_common_text">淘宝优惠卷</p>
+      	 		</figure>
+      	 	</div>
+      	 	<div class="weui-flex__item">
+      	 		<figure>
+      	 			<img src="{:config('home_images')}profile_icon_jd.png" class="user_common_img">
+      	 			<p class="user_common_text">京东优惠卷</p>
+      	 		</figure>
+      	 	</div>
+      	 	<div class="weui-flex__item">
+      	 		<figure>
+      	 			<img src="{:config('home_images')}profile_icon_jde.png" class="user_common_img">
+      	 			<p class="user_common_text">京东e卡</p>
+      	 		</figure>
+      	 	</div>
+      	 </div>
+      </div>
+      <!-- footer nav -->
+      <div class="weui-tabbar weui-tabbar_footer">
+                <a href="index_wap.html" class="weui-tabbar__item">
+                  <div class="weui-tabbar__icon">
+                    <img src="{:config('home_images')}tab_btn_home_nor.png" alt="">
+                  </div>
+                  <p class="weui-tabbar__label index_nav_footertext">首页</p>
+                </a>
+                <a href="javascript:0;" class="weui-tabbar__item">
+                  <div class="weui-tabbar__icon">
+                    <img src="{:config('home_images')}tab_btn_quotes_nor.png" alt="">
+                  </div>
+                  <p class="weui-tabbar__label">详情页</p>
+                </a>
+                <a href="javascript:;" class="weui-tabbar__item weui-bar__item--on">
+                  <div class="weui-tabbar__icon">
+                    <img src="{:config('home_images')}tab_btn_my_sel.png" alt="">
+                  </div>
+                  <p class="weui-tabbar__label index_nav_footertext on">我</p>
+                </a>
+      </div>
+    </div>  
+      <script src="{:config('home_js')}jquery-3.0.0.min.js"></script>
+      <script src="{:config('home_js')}jquery-weui.min.js"></script>
+      <!-- <script src="{:config('home_js')}public.js"></script> -->
+      <script>
+        $(function(){
+            $.toast.prototype.defaults.duration="1500";//设置默认时间为1s
+            user_order();
+            function user_order(){
+               $.ajax({
+                  url:'/api/v1/reception/GetOrderPeace',
+                  dataType:'json',
+                  type:'get',
+                  success:function(res){
+                     if(res.data.actual_price==""){
+                        $("#actual_price").text("0");
+                     }else{
+                       $("#actual_price").text(res.data.actual_price);
+                     }
+                     if(res.data.estimate_price==""){
+                        $("#estimate_price").text("0");
+                     }else{
+                        $("#estimate_price").text(res.data.estimate_price);
+                     }  
+                  },
+                  error:function(error){
+                     console.log(res);
+                  }
+
+               })
+            }
+
+            /* 查询用户电话号码 */
+            ajax_phone();
+            function ajax_phone(){
+                 $.ajax({
+                    url:"/api/v1/phone/phone",
+                    dataType:"json",
+                    type:"get",
+                    success:function(res){
+                      console.log(res);
+                      if(res.code=="400"){
+                         $(".user_main_name").text("未登录");
+                         user_details();
+                      }else if(res.data!=""){ //已登陆
+                         var userphone=res.data;
+                         $(".user_main_name").text(userphone.substring(0,3)+"****"+userphone.substring(8,11));
+                         $("#user_info_ok").attr("href","user_info.html");
+                         $("#order_details_ok").attr("href","order_details.html");
+                         $("#settlement_details_ok").attr("href","settlement_details.html");
+                      }else{
+                         $(".user_main_name").text("未登录");
+                         user_details();
+                      }
+                      
+                    },
+                    error:function(XMLHttpRequest,textStatus,errorThrown){
+                      console.log(errorThrown);
+                      $(".user_main_name").text("未登录");
+                      user_details();
+                    }      
+
+                 })
+              }
+
+            $(".weui-flex__item figure").click(function(){
+                $.toast("功能正在开发中,敬请期待",'text');
+            })
+            function user_details(){
+                /* 跳转到个人信息页面未登陆 */
+                $("#user_info_ok").click(function(){
+                      userinfo();
+                });
+                /* 查看全部订单页面未登陆 */
+                $("#order_details_ok").click(function(){
+                   userinfo();
+                })
+                /* 查看明细页面未登陆 */
+                $("#settlement_details_ok").click(function(){
+                   userinfo();
+                })
+            }
+            function userinfo(){
+               $.toast("您还未登录呢,马上为你跳转到登陆页","text",function(){
+                    window.location.href="logins.html";
+               });
+            }
+        })
+      </script>
+</body>
+</html>

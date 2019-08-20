@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1.0,user-scalable=no">
+<title>设置密码</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link rel="stylesheet" href="{:config('home_css')}weui.min.css">
+<link rel="stylesheet" href="{:config('home_css')}jquery-weui.min.css">
+<link rel="stylesheet" href="{:config('home_css')}public.css">
+<link rel="stylesheet" href="{:config('home_css')}styles.css">
+
+</head>
+<body class="registercolor register_pwd">
+    <div class="container">
+      <header class="public_header">
+      	  <div class="public_left">
+      	  	<a href="javascript:history.back(-1)">
+      	  	   <img src="{:config('home_images')}nav_icon_back.png" class="nav_back">
+      	    </a>
+      	  </div>
+      	  <div class="public_center">
+      	  	<h5 class="register_h5title">设置密码</h5>
+      	  </div>
+      </header> 
+      <div class="register_from">	
+        <div calss="weui-cells weui-cells_from">
+        	 <div class="weui-cell weui-cell_vcode register_input">
+        	 	<div class="weui-cell_bd">
+        	 		<input class="weui-input register_cell_input" type="password" name="password" placeholder="请输入密码">
+        	 	</div>
+        	 </div>
+        	 <div class="weui-cell weui-cell_vcode register_input">
+        	 	<div class="weui-cell_bd">
+        	 		<input class="weui-input register_cell_input" type="password" name="repassword" placeholder="确认密码">
+        	 	</div>
+        	 </div>
+        	<!--  <div class="weui-cells__tips register_pwd_tips">密码长度8-32位。须包含数字,字母,符号至少2种或以上元素</div> -->
+        	 <a href="javascript:;" id="register_pwdbtn" class="weui-btn register_btn">确认提交</a> <!-- register_submit -->
+        	 
+        </div>
+      </div>  
+    </div>
+    <script src="{:config('home_js')}jquery-3.0.0.min.js"></script>
+    <script src="{:config('home_js')}jquery-weui.min.js"></script>
+    <script>
+        $(function(){
+           var searchURL = window.location.search;//获取路径
+           var num = searchURL.replace('?', '').split('&');
+           $.toast.prototype.defaults.duration="1000";//设置默认时间为1s
+           $("#register_pwdbtn").click(function(){
+               
+               var password1=$("input[name='password']").val();
+               var password2=$("input[name='repassword']").val();
+               if(password1==""){
+                  $.toast("请输入密码","text");
+               }else if(password1.length<6){
+                  $.toast("请输入大于6位数的密码","text");
+               }else if(password2 == password1){
+                  if(num=="0"){
+                     register(password1,password2);
+                  }else{
+                     up_register(password1,password2);
+                  }
+               }else{
+                   $.toast("密码输入不一致", "text");
+               }
+               
+           })
+
+           /* 注册接口 */
+           function register(pwd1,pwd2){
+               $.ajax({
+                   url:'/api/v1/reception/memberregister_t',
+                   data:{password:pwd1,password2:pwd2},
+                   dataType:'json',
+                   type:"post",
+                   success:function(res){
+                      console.log(res);
+                      if(res.code=="201"){
+                         $.toast("注册成功", function() {
+                             window.location.href="logins.html";
+                         });
+                      }else{
+                         $.toast(res.msg,"text");
+                      }
+                   },
+                   error:function(XMLHttpRequest,textStatus,errorThrown){
+                      console.log(errorThrown);
+                   }
+               })
+           }
+           
+           /*  忘记密码接口  */   
+           function up_register(pwd1,pwd2){
+              $.ajax({
+                   url:"{:url('/api/v1/passup/passup')}",
+                   data:{password:pwd1,password2:pwd2},
+                   dataType:'json',
+                   type:"post",
+                   success:function(res){
+                      console.log(res);
+                      if(res.code=="201"){
+                         $.toast("密码修改成功", function() {
+                             window.location.href="logins.html";
+                         });
+                      }else{
+                        $.toast(res.msg, "text");
+                      }
+                   },
+                   error:function(XMLHttpRequest,textStatus,errorThrown){
+                      console.log(errorThrown);
+                   }
+              })
+           }
+
+           $("input[name='repassword']").bind('input prototypechange',function(){
+               var password1=$("input[name='password']").val();
+               var password2=$("input[name='repassword']").val();
+               if(password1==""){
+                  $("#register_pwdbtn").removeClass("register_submit");
+               }else if(password2 == password1){
+                  $("#register_pwdbtn").addClass("register_submit");
+               }else{
+                  $("#register_pwdbtn").removeClass("register_submit");
+               } 
+           })
+
+        })
+    </script>
+</body>
+</html>
